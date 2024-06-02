@@ -5,11 +5,14 @@ if($_SERVER["REQUEST_METHOD"]==="POST"){
 
     $bookName=$_POST["book"];
     $authorName=$_POST["author"];
+    $publisher=$_POST["publisher"];
+    $year=$_POST["year"];
+    $isbn=$_POST["isbn"];
     echo "$bookName";
     echo "$authorName";
 
     try{
-        $sql = mysqli_query($conn,"call deleteBook('$bookName','$authorName')");
+        $sql = mysqli_query($conn,"call deleteBook('$bookName','$authorName','$publisher','$year','$isbn')");
         if($sql){
         // Message for successfull insertion
         echo "<script>alert('Book deleted successfully');</script>";

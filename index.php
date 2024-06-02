@@ -17,11 +17,11 @@ if($result->num_rows>0){
         array_push($books,$book);
     }
 }
+$search_array = array();
 
 if($_SERVER["REQUEST_METHOD"]==="POST"){
     $search=$_POST["searchFor"];
     $param=$_POST["search_parameter"];
-    $search_array = array();
     switch($param){
         case "book":
             foreach($books as $book){
@@ -77,7 +77,7 @@ if($_SERVER["REQUEST_METHOD"]==="POST"){
 <head>
 <link rel="stylesheet" href="style.css">
 <script type="text/javascript" src="script.js" defer></script>
-<title>Page Title</title>
+<title>Books Unifun</title>
 </head>
 <body>
     <div class="main_class">
@@ -118,6 +118,9 @@ if($_SERVER["REQUEST_METHOD"]==="POST"){
                             <form action="deleteBook.php" method="POST" onsubmit="return deleteBookSubmit()">
                                 <input type="hidden" name="book" value="<?php echo $book->getBookName() ?>">
                                 <input type="hidden" name="author" value="<?php echo $book->getAuthorName() ?>">
+                                <input type="hidden" name="publisher" value="<?php echo $book->getPubliisher(); ?>">
+                                <input type="hidden" name="year" value="<?php echo  $book->getYear(); ?>">
+                                <input type="hidden" name="isbn" value="<?php echo  $book->getISBN(); ?>">
                                 <input type="submit" value="Delete">
                             </form>
                </td>
@@ -150,7 +153,6 @@ if($_SERVER["REQUEST_METHOD"]==="POST"){
 
     <?php if(count($search_array)>0): ?>
     <div class="main_class">
-        <h1>Books</h1>
         <table class="table">
             <thead>
                 <tr>

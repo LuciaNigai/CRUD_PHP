@@ -17,7 +17,7 @@ if($_SERVER["REQUEST_METHOD"]==="POST"){
     $genre=$_POST["fgenre"];
     $isbn=$_POST["fisbn"];
 
-    
+
     // Split the strings into arrays
     $arrayOld = explode(',', $oldgenre);
     $arrayNew = explode(',', $genre);
